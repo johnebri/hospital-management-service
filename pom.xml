@@ -11,7 +11,7 @@
 	<groupId>com.johnebri</groupId>
 	<artifactId>hospital-management-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>jospital-management-service</name>
+	<name>hospital-management-service</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
