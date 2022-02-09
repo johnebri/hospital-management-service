@@ -1,15 +1,25 @@
 package com.johnebri.hospitalmanagementservice.controllers;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.johnebri.hospitalmanagementservice.model.Staff;
+import com.johnebri.hospitalmanagementservice.service.StaffService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.UUID;
 
 @RestController
 @RequestMapping("staff")
 public class StaffController {
 
-    @GetMapping()
-    public String createStaff() {
-        return "Creating new Staff memeber";
+    @Autowired
+    private StaffService staffService;
+
+    @PostMapping()
+    public ResponseEntity<?> createStaff(@RequestBody Staff staff) {
+        UUID uuid = UUID.randomUUID();
+        staff.setUuid(uuid.toString());
+        return new ResponseEntity<Staff>(staffService.newStaff(staff), HttpStatus.OK);
     }
 }
