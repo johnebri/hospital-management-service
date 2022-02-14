@@ -3,6 +3,6 @@ package com.johnebri.hospitalmanagementservice.dto.staff;
 import lombok.Data;
 
 @Data
-public class NewStaffRequest {
+public class NewOrUpdateStaffRequest {
     private String name;
 }
