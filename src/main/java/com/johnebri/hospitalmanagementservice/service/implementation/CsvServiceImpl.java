@@ -1,14 +1,13 @@
-package com.johnebri.hospitalmanagementservice.service;
+package com.johnebri.hospitalmanagementservice.service.implementation;
 
 import com.johnebri.hospitalmanagementservice.model.Patient;
+import com.johnebri.hospitalmanagementservice.service.CsvService;
 import org.springframework.stereotype.Service;
 
 import java.io.PrintWriter;
-import java.util.Date;
-import java.util.List;
 
 @Service
-public class CsvServiceImpl implements CsvService{
+public class CsvServiceImpl implements CsvService {
 
     @Override
     public void downloadCsvFile(PrintWriter printWriter, Patient patient) {

@@ -11,10 +11,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("staff")
+@RequestMapping("api/v1/staff")
 public class StaffController {
 
     @Autowired
@@ -24,7 +25,7 @@ public class StaffController {
     ValidationService validationService;
 
     @PostMapping
-    public ResponseEntity<?> createStaff(@RequestBody NewOrUpdateStaffRequest request)  {
+    public ResponseEntity<?> createStaff(@Valid @RequestBody NewOrUpdateStaffRequest request)  {
         BaseResponse<Staff> baseResponse = new BaseResponse<>();
 
         Staff staff = new Staff();
@@ -35,7 +36,7 @@ public class StaffController {
     }
 
     @PutMapping("/{staffId}")
-    public ResponseEntity<?> updateStaff(@RequestBody NewOrUpdateStaffRequest request, @PathVariable Long staffId, @RequestHeader("Authorization") String authorization) throws Exception {
+    public ResponseEntity<?> updateStaff(@Valid @RequestBody NewOrUpdateStaffRequest request, @PathVariable Long staffId, @RequestHeader("Authorization") String authorization) throws Exception {
         validationService.validateUuid(authorization);
         BaseResponse<Staff> baseResponse = new BaseResponse<>();
         return baseResponse.getResponse(true, "Staff updated successfully", staffService.updateStaff(request, staffId), HttpStatus.OK);

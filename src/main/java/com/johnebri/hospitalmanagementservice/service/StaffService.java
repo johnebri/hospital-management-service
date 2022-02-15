@@ -5,5 +5,5 @@ import com.johnebri.hospitalmanagementservice.model.Staff;
 
 public interface StaffService {
     Staff newStaff(Staff staff);
-    Staff updateStaff(NewOrUpdateStaffRequest request, Long StaffId);
+    Staff updateStaff(NewOrUpdateStaffRequest request, Long StaffId) throws Exception;
 }
