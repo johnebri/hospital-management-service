@@ -23,13 +23,19 @@ class HospitalManagementServiceApplicationTests {
 
 	@Test
 	public void createStaffTest() {
-//		Staff staff = new Staff();
-//		NewOrUpdateStaffRequest request = new NewOrUpdateStaffRequest();
-//		request.setName(staff.getName());
-//		when(staffRepository.save(staff)).thenReturn(staff);
-//		assertEquals(staff, staffService.newStaff(request));
+		Staff staff = new Staff();
+		when(staffRepository.save(staff)).thenReturn(staff);
+		assertEquals(staff, staffService.newStaff(staff));
 	}
 
-
+	@Test
+	public void updateStaffTest() {
+		Long staffId = 1L;
+		Staff staff = new Staff();
+		NewOrUpdateStaffRequest request = new NewOrUpdateStaffRequest();
+		request.setName(staff.getName());
+		when(staffRepository.save(staff)).thenReturn(staff);
+		assertEquals(staff, staffService.updateStaff(request, staffId));
+	}
 
 }

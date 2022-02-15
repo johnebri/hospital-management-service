@@ -4,6 +4,6 @@ import com.johnebri.hospitalmanagementservice.dto.staff.NewOrUpdateStaffRequest;
 import com.johnebri.hospitalmanagementservice.model.Staff;
 
 public interface StaffService {
-    Staff newStaff(NewOrUpdateStaffRequest request);
+    Staff newStaff(Staff staff);
     Staff updateStaff(NewOrUpdateStaffRequest request, Long StaffId);
 }

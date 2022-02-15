@@ -16,11 +16,7 @@ public class StaffServiceImpl implements StaffService{
     private StaffRepository staffRepository;
 
     @Override
-    public Staff newStaff(NewOrUpdateStaffRequest request) {
-        Staff staff = new Staff();
-        UUID uuid = UUID.randomUUID();
-        staff.setName(request.getName());
-        staff.setUuid(uuid.toString());
+    public Staff newStaff(Staff staff) {
         return staffRepository.save(staff);
     }
 
