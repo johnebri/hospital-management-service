@@ -24,9 +24,9 @@ public class StaffController {
     ValidationService validationService;
 
     @PostMapping
-    public ResponseEntity<?> createStaff(@RequestBody NewOrUpdateStaffRequest request, @RequestHeader("Authorization") String authorization) throws Exception {
+    public ResponseEntity<?> createStaff(@RequestBody NewOrUpdateStaffRequest request)  {
         BaseResponse<Staff> baseResponse = new BaseResponse<>();
-        validationService.validateUuid(authorization);
+
         Staff staff = new Staff();
         UUID uuid = UUID.randomUUID();
         staff.setName(request.getName());
@@ -35,9 +35,9 @@ public class StaffController {
     }
 
     @PutMapping("/{staffId}")
-    public ResponseEntity<?> updateStaff(@RequestBody NewOrUpdateStaffRequest request, @PathVariable Long staffId) {
+    public ResponseEntity<?> updateStaff(@RequestBody NewOrUpdateStaffRequest request, @PathVariable Long staffId, @RequestHeader("Authorization") String authorization) throws Exception {
+        validationService.validateUuid(authorization);
         BaseResponse<Staff> baseResponse = new BaseResponse<>();
-
         return baseResponse.getResponse(true, "Staff updated successfully", staffService.updateStaff(request, staffId), HttpStatus.OK);
     }
 }
